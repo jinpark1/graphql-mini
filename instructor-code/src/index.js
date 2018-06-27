@@ -2,14 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
 import './index.css'
-import ApolloClient, { gql } from 'apollo-boost'
+import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-
 
 const client = new ApolloClient({
     uri: 'http://localhost:3050/graphql',
-    // links: ,
-    // cache: ,
 })
 
 ReactDOM.render( 

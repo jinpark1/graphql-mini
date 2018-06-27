@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import DeletePersonMutation from '../components/mutations/DeletePerson'
 
 export default class Card extends Component {
   render() {
+    console.log('Card------', this.props)
     return (
       <div className='card'>
         <h4>Character:</h4>
@@ -15,6 +17,19 @@ export default class Card extends Component {
         <p>{this.props.films.length}</p>
         <br />
         { /* Delete */ }
+        <DeletePersonMutation>
+          { (loading, error, deletePerson) => {
+            return (
+              <div>
+                <button onClick={ () => deletePerson({ variables: { id: this.props.id }}) }>
+                  Delete
+                </button>
+                { loading && <p>Loading.....</p> }
+                { error && <p>Error.....</p> }
+              </div>
+            )
+          }}
+        </DeletePersonMutation>
       </div>
     )
   }
